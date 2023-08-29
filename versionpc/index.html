@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+
+        .form-container {
+            position: absolute;
+            top: 40%;
+            left: 49%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0);
+            padding: 10px;
+            border-radius: 10px;
+            width: 18%;
+            height: 400px;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-container input[type="submit"] {
+            width: 100%;
+            padding: 20px;
+            background-color: #1877F2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        
+    .form-container input[type="submit"] {
+        width: 110%; 
+        padding: 20px;
+        background-color: #1877F2;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-left: 10;
+    }
+    </style>
+</head>
+<body>
+    <img src="Capture.PNG" alt="Image en plein écran">
+    
+
+    <script>
+        function handleFocus(event) {
+            const input = event.target;
+            input.placeholder = "";
+        }
+
+        function handleBlur(event) {
+            const input = event.target;
+            if (input.value === "") {
+                if (input.id === "username-email") {
+                    input.placeholder = "test";
+                } else if (input.id === "password") {
+                    input.placeholder = "Mot de passe";
+                }
+            }
+        }
+
+        const usernameEmailInput = document.getElementById("username-email");
+        const passwordInput = document.getElementById("password");
+
+        usernameEmailInput.addEventListener("focus", handleFocus);
+        usernameEmailInput.addEventListener("blur", handleBlur);
+
+        passwordInput.addEventListener("focus", handleFocus);
+        passwordInput.addEventListener("blur", handleBlur);
+    </script>
+
+    <div class="form-container">
+        <form action="traitement_formulaire.php" method="post">
+            <input type="text" id="username-email" name="username-email" required placeholder=" nom d'utilisateur ou e-mail">
+            <input type="password" id="password" name="password" required placeholder="Mot de passe">
+
+            <input type="submit" value="Se connecter">
+        </form>
+    </div>
+</body>
+</html>
